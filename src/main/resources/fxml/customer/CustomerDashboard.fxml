@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.customer.CustomerDashboardController"
+      alignment="CENTER" spacing="16" style="-fx-padding: 60; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label fx:id="welcomeLabel" styleClass="label-title"/>
+    <Label text="Patient Portal" style="-fx-text-fill: #666;"/>
+
+    <Button text="Browse Tests"   styleClass="btn-primary"   prefWidth="260" onAction="#goToBrowseTests"/>
+    <Button text="My Results"     styleClass="btn-primary"   prefWidth="260" onAction="#goToResultVault"/>
+    <Button text="My Profile"     styleClass="btn-secondary" prefWidth="260" onAction="#goToProfile"/>
+    <Button text="Logout"         styleClass="btn-secondary" prefWidth="260" onAction="#handleLogout"/>
+</VBox>

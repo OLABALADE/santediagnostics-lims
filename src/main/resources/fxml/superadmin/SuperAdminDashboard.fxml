@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.superadmin.SuperAdminDashboardController"
+      alignment="CENTER" spacing="16" style="-fx-padding: 60; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label fx:id="welcomeLabel" styleClass="label-title"/>
+    <Label text="Super Admin Dashboard" style="-fx-text-fill: #666;"/>
+
+    <Button text="Test Builder"       styleClass="btn-primary"   prefWidth="260" onAction="#goToTestBuilder"/>
+    <Button text="Request Queue"      styleClass="btn-primary"   prefWidth="260" onAction="#goToRequestQueue"/>
+    <Button text="User Management"    styleClass="btn-primary"   prefWidth="260" onAction="#goToUserManagement"/>
+    <Button text="Audit Trail"        styleClass="btn-primary"   prefWidth="260" onAction="#goToAuditTrail"/>
+    <Button text="Logout"             styleClass="btn-secondary" prefWidth="260" onAction="#handleLogout"/>
+</VBox>

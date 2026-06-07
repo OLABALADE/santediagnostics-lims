@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.auth.LoginController"
+      alignment="CENTER" spacing="14" style="-fx-padding: 60 80; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label text="Sante Diagnostics" styleClass="label-title"/>
+    <Label text="Lab Information Management System" style="-fx-text-fill: #666;"/>
+
+    <TextField fx:id="emailField" promptText="Email" prefWidth="300"/>
+    <PasswordField fx:id="passwordField" promptText="Password" prefWidth="300"/>
+    <Label fx:id="errorLabel" styleClass="error-label"/>
+
+    <Button text="Login" styleClass="btn-primary" prefWidth="300" onAction="#handleLogin"/>
+    <Button text="Create account" styleClass="btn-secondary" prefWidth="300" onAction="#goToRegister"/>
+</VBox>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.customer.BrowseTestsController"
+      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label text="Available Tests" styleClass="label-title"/>
+
+    <TableView fx:id="testTable" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="colName"   text="Test Name" prefWidth="200"/>
+            <TableColumn fx:id="colPrice"  text="Price"     prefWidth="120"/>
+            <TableColumn fx:id="colTat"    text="TAT (hrs)" prefWidth="90"/>
+            <TableColumn fx:id="colFormat" text="Result"    prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <Button text="Place Order" styleClass="btn-primary" prefWidth="200" onAction="#handleOrder"/>
+
+    <Label fx:id="bankDetailsLabel" style="-fx-background-color: #e8f5e9; -fx-padding: 12; -fx-background-radius: 4;" wrapText="true" prefWidth="500"/>
+    <Label fx:id="errorLabel" styleClass="error-label"/>
+    <Button text="← Back" styleClass="btn-secondary" onAction="#goBack"/>
+</VBox>

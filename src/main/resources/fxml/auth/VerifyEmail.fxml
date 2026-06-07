@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.auth.VerifyEmailController"
+      alignment="CENTER" spacing="14" style="-fx-padding: 60 80; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label text="Verify Email" styleClass="label-title"/>
+    <Label text="Enter the token from your verification email." style="-fx-text-fill: #666;" wrapText="true"/>
+
+    <TextField fx:id="tokenField" promptText="Verification token" prefWidth="300"/>
+    <Label fx:id="errorLabel" styleClass="error-label"/>
+
+    <Button text="Verify"       styleClass="btn-primary"   prefWidth="300" onAction="#handleVerify"/>
+    <Button text="Back to Login" styleClass="btn-secondary" prefWidth="300" onAction="#goToLogin"/>
+</VBox>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.sante.lims.controller.superadmin.TestBuilderController"
+      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label text="Test Builder" styleClass="label-title"/>
+
+    <TableView fx:id="testTable" prefHeight="260" onMouseClicked="#handleSelect">
+        <columns>
+            <TableColumn fx:id="colName"   text="Name"    prefWidth="180"/>
+            <TableColumn fx:id="colPrice"  text="Price"   prefWidth="100"/>
+            <TableColumn fx:id="colTat"    text="TAT (h)" prefWidth="80"/>
+            <TableColumn fx:id="colFormat" text="Format"  prefWidth="100"/>
+            <TableColumn fx:id="colActive" text="Active"  prefWidth="70"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <TextField fx:id="nameField"  promptText="Test name"         prefWidth="180"/>
+        <TextField fx:id="priceField" promptText="Price"             prefWidth="100"/>
+        <TextField fx:id="tatField"   promptText="TAT hours"         prefWidth="90"/>
+        <ComboBox  fx:id="formatCombo" promptText="Format"           prefWidth="110"/>
+        <Button text="Save" styleClass="btn-primary" onAction="#handleSave"/>
+    </HBox>
+
+    <Label fx:id="errorLabel" styleClass="error-label"/>
+    <Button text="← Back" styleClass="btn-secondary" onAction="#goBack"/>
+</VBox>

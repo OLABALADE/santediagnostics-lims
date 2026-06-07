@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.attendant.SampleTrackingController"
+      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label text="Sample Tracking" styleClass="label-title"/>
+
+    <TableView fx:id="sampleTable" prefHeight="340">
+        <columns>
+            <TableColumn fx:id="colId"      text="ID"         prefWidth="60"/>
+            <TableColumn fx:id="colRequest" text="Request ID" prefWidth="100"/>
+            <TableColumn fx:id="colStatus"  text="Status"     prefWidth="140"/>
+            <TableColumn fx:id="colUpdated" text="Updated"    prefWidth="180"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <ComboBox fx:id="statusCombo" promptText="New Status" prefWidth="200"/>
+        <Button text="Update Status" styleClass="btn-primary" onAction="#handleUpdateStatus"/>
+    </HBox>
+
+    <Label fx:id="errorLabel" styleClass="error-label"/>
+    <Button text="← Back" styleClass="btn-secondary" onAction="#goBack"/>
+</VBox>

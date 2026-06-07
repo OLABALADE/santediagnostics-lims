@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.customer.ResultVaultController"
+      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label text="My Results" styleClass="label-title"/>
+
+    <Label text="Active Orders:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="countdownLabel" wrapText="true" style="-fx-text-fill: #555; -fx-background-color: #e3f2fd; -fx-padding: 10; -fx-background-radius: 4;" prefWidth="580"/>
+
+    <Label text="Verified Results:" style="-fx-font-weight: bold;"/>
+    <TableView fx:id="resultTable" prefHeight="240">
+        <columns>
+            <TableColumn fx:id="colValue" text="Value"    prefWidth="200"/>
+            <TableColumn fx:id="colFile"  text="Has File" prefWidth="90"/>
+            <TableColumn fx:id="colDate"  text="Date"     prefWidth="180"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Button text="Download File" styleClass="btn-primary"   onAction="#handleDownload"/>
+        <Button text="← Back"        styleClass="btn-secondary" onAction="#goBack"/>
+    </HBox>
+
+    <Label fx:id="errorLabel" styleClass="error-label"/>
+</VBox>

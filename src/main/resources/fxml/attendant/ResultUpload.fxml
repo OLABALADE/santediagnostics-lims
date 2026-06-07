@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.attendant.ResultUploadController"
+      spacing="14" style="-fx-padding: 40 80; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label text="Result Upload" styleClass="label-title"/>
+
+    <ComboBox fx:id="sampleCombo" promptText="Select Sample" prefWidth="300"/>
+    <TextField fx:id="textValueField" promptText="Text result (if applicable)" prefWidth="300"/>
+    <TextField fx:id="numericValueField" promptText="Numeric result (if applicable)" prefWidth="300"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Browse File (PDF/Image)" styleClass="btn-secondary" onAction="#handleBrowse"/>
+        <Label fx:id="fileLabel" text="No file selected" style="-fx-text-fill: #666;"/>
+    </HBox>
+
+    <Label fx:id="errorLabel" styleClass="error-label"/>
+
+    <HBox spacing="10">
+        <Button text="Upload Result" styleClass="btn-primary"   onAction="#handleUpload"/>
+        <Button text="Verify Result" styleClass="btn-primary"   onAction="#handleVerify"/>
+        <Button text="← Back"        styleClass="btn-secondary" onAction="#goBack"/>
+    </HBox>
+</VBox>
