@@ -1,10 +1,9 @@
--- Seed: Super Admin account
--- Password: Admin@1234  (BCrypt hash below)
+-- Password: Admin@1234
 INSERT INTO users (name, email, password_hash, role, email_verified, force_password_change)
 VALUES (
     'Super Admin',
     'admin@santediagnostics.com',
-    '$2a$12$eImiTXuWVxfM37uY4JANjQ==uqkXjQRIFE8Qm6s8jFsLY5G1yFCym',
+    '$2a$12$g4cODqX7pBZsA8j/glFkQu/Ve0ur8Qz/EA7/Y1Fl65YHlUUhgJUwq',
     'SUPER_ADMIN',
     TRUE,
     FALSE
