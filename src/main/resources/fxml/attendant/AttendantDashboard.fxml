@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.attendant.AttendantDashboardController"
-      alignment="CENTER" spacing="16" style="-fx-padding: 60; -fx-background-color: white;"
+      alignment="CENTER" spacing="20" styleClass="card" style="-fx-background-color: white;"
       stylesheets="@../../css/global.css">
+    
+    <padding>
+        <Insets top="60" right="60" bottom="60" left="60"/>
+    </padding>
 
-    <Label fx:id="welcomeLabel" styleClass="label-title"/>
-    <Label text="Lab Attendant Dashboard" style="-fx-text-fill: #666;"/>
+    <VBox alignment="CENTER" spacing="8">
+        <Label fx:id="welcomeLabel" styleClass="label-title"/>
+        <Label text="Lab Attendant Dashboard" styleClass="label-subtitle"/>
+    </VBox>
 
-    <Button text="Request Queue"    styleClass="btn-primary"   prefWidth="260" onAction="#goToQueue"/>
-    <Button text="Sample Tracking"  styleClass="btn-primary"   prefWidth="260" onAction="#goToSampleTracking"/>
-    <Button text="Result Upload"    styleClass="btn-primary"   prefWidth="260" onAction="#goToResultUpload"/>
-    <Button text="Logout"           styleClass="btn-secondary" prefWidth="260" onAction="#handleLogout"/>
+    <VBox spacing="12" alignment="CENTER" prefWidth="280">
+        <Button text="📋 Request Queue" styleClass="btn-primary" prefWidth="280" onAction="#goToQueue"/>
+        <Button text="🔬 Sample Tracking" styleClass="btn-primary" prefWidth="280" onAction="#goToSampleTracking"/>
+        <Button text="📤 Result Upload" styleClass="btn-primary" prefWidth="280" onAction="#goToResultUpload"/>
+        <Button text="🚪 Logout" styleClass="btn-secondary" prefWidth="280" onAction="#handleLogout"/>
+    </VBox>
 </VBox>
