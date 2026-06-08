@@ -3,18 +3,18 @@
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.superadmin.AuditTrailController"
-      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      spacing="16" style="-fx-padding: 30; -fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
       stylesheets="@../../css/global.css">
 
     <Label text="Audit Trail" styleClass="label-title"/>
 
     <TableView fx:id="auditTable" prefHeight="400">
         <columns>
-            <TableColumn fx:id="colUser"   text="User"   prefWidth="80"/>
-            <TableColumn fx:id="colAction" text="Action" prefWidth="160"/>
+            <TableColumn fx:id="colUser" text="User" prefWidth="100"/>
+            <TableColumn fx:id="colAction" text="Action" prefWidth="180"/>
             <TableColumn fx:id="colEntity" text="Entity" prefWidth="120"/>
-            <TableColumn fx:id="colDetail" text="Detail" prefWidth="160"/>
-            <TableColumn fx:id="colDate"   text="Date"   prefWidth="160"/>
+            <TableColumn fx:id="colDetail" text="Detail" prefWidth="200"/>
+            <TableColumn fx:id="colDate" text="Date" prefWidth="160"/>
         </columns>
     </TableView>
 
