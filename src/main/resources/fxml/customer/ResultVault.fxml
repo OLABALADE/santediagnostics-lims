@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.customer.ResultVaultController"
-      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      spacing="16" styleClass="card" style="-fx-background-color: white;"
       stylesheets="@../../css/global.css">
+    
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
 
-    <Label text="My Results" styleClass="label-title"/>
+    <Label text="📊 My Results" styleClass="label-title"/>
 
-    <Label text="Active Orders:" style="-fx-font-weight: bold;"/>
-    <Label fx:id="countdownLabel" wrapText="true" style="-fx-text-fill: #555; -fx-background-color: #e3f2fd; -fx-padding: 10; -fx-background-radius: 4;" prefWidth="580"/>
+    <VBox spacing="8">
+        <Label text="Active Orders" style="-fx-font-weight: bold;"/>
+        <Label fx:id="countdownLabel" wrapText="true" style="-fx-background-color: #e3f2fd; -fx-padding: 12; -fx-background-radius: 8;" prefWidth="580"/>
+    </VBox>
 
-    <Label text="Verified Results:" style="-fx-font-weight: bold;"/>
-    <TableView fx:id="resultTable" prefHeight="240">
-        <columns>
-            <TableColumn fx:id="colValue" text="Value"    prefWidth="200"/>
-            <TableColumn fx:id="colFile"  text="Has File" prefWidth="90"/>
-            <TableColumn fx:id="colDate"  text="Date"     prefWidth="180"/>
-        </columns>
-    </TableView>
+    <VBox spacing="8">
+        <Label text="Verified Results" style="-fx-font-weight: bold;"/>
+        <TableView fx:id="resultTable" prefHeight="240">
+            <columns>
+                <TableColumn fx:id="colTestName" text="Test Name" prefWidth="180"/>
+                <TableColumn fx:id="colValue" text="Result Value" prefWidth="180"/>
+                <TableColumn fx:id="colFile" text="Attachment" prefWidth="80"/>
+                <TableColumn fx:id="colDate" text="Date" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </VBox>
 
     <HBox spacing="10">
-        <Button text="Download File" styleClass="btn-primary"   onAction="#handleDownload"/>
-        <Button text="← Back"        styleClass="btn-secondary" onAction="#goBack"/>
+        <Button text="Download File" styleClass="btn-primary" onAction="#handleDownload"/>
+        <Button text="← Back" styleClass="btn-secondary" onAction="#goBack"/>
     </HBox>
 
     <Label fx:id="errorLabel" styleClass="error-label"/>
