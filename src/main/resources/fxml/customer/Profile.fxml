@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.customer.ProfileController"
-      spacing="14" style="-fx-padding: 60 80; -fx-background-color: white;"
+      spacing="16" styleClass="card" style="-fx-background-color: white;"
       stylesheets="@../../css/global.css">
+    
+    <padding>
+        <Insets top="40" right="80" bottom="40" left="80"/>
+    </padding>
 
-    <Label text="My Profile" styleClass="label-title"/>
+    <Label text="👤 My Profile" styleClass="label-title"/>
 
-    <HBox spacing="10"><Label text="Name:"  style="-fx-font-weight: bold;"/><Label fx:id="nameLabel"/></HBox>
-    <HBox spacing="10"><Label text="Email:" style="-fx-font-weight: bold;"/><Label fx:id="emailLabel"/></HBox>
+    <VBox spacing="10" style="-fx-padding: 20 0;">
+        <HBox spacing="10"><Label text="Name:" style="-fx-font-weight: bold; -fx-min-width: 80;"/><Label fx:id="nameLabel"/></HBox>
+        <HBox spacing="10"><Label text="Email:" style="-fx-font-weight: bold; -fx-min-width: 80;"/><Label fx:id="emailLabel"/></HBox>
+    </VBox>
 
     <Separator/>
-    <Label text="Change Password" style="-fx-font-weight: bold;"/>
-    <PasswordField fx:id="newPasswordField"     promptText="New Password"     prefWidth="300"/>
-    <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" prefWidth="300"/>
-    <Label fx:id="errorLabel" styleClass="error-label"/>
 
-    <Button text="Update Password" styleClass="btn-primary"   prefWidth="300" onAction="#handleChangePassword"/>
-    <Button text="← Back"          styleClass="btn-secondary" prefWidth="300" onAction="#goBack"/>
+    <VBox spacing="12" alignment="CENTER_LEFT">
+        <Label text="Change Password" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+        <PasswordField fx:id="newPasswordField" promptText="New Password" prefWidth="300" style="-fx-padding: 10 12;"/>
+        <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" prefWidth="300" style="-fx-padding: 10 12;"/>
+        <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+        <Button text="Update Password" styleClass="btn-primary" prefWidth="300" onAction="#handleChangePassword"/>
+        <Button text="← Back" styleClass="btn-secondary" prefWidth="300" onAction="#goBack"/>
+    </VBox>
 </VBox>

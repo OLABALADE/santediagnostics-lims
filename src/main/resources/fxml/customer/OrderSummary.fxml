@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.customer.OrderSummaryController"
-      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      spacing="16" styleClass="card" style="-fx-background-color: white;"
       stylesheets="@../../css/global.css">
+    
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
 
-    <Label text="My Orders" styleClass="label-title"/>
+    <Label text="📋 Order Summary" styleClass="label-title"/>
 
     <TableView fx:id="orderTable" prefHeight="320">
         <columns>
-            <TableColumn fx:id="colTest"    text="Test"    prefWidth="220"/>
-            <TableColumn fx:id="colPayment" text="Payment" prefWidth="110"/>
-            <TableColumn fx:id="colDate"    text="Date"    prefWidth="130"/>
+            <TableColumn fx:id="colTest" text="Test Name" prefWidth="220"/>
+            <TableColumn fx:id="colPayment" text="Payment Status" prefWidth="110"/>
+            <TableColumn fx:id="colDate" text="Order Date" prefWidth="130"/>
         </columns>
     </TableView>
 
-    <Label fx:id="totalLabel" style="-fx-font-weight: bold;"/>
+    <Label fx:id="totalLabel" style="-fx-font-weight: bold; -fx-text-fill: #1a73e8;"/>
     <Label fx:id="errorLabel" styleClass="error-label"/>
     <Button text="← Back" styleClass="btn-secondary" onAction="#goBack"/>
 </VBox>
