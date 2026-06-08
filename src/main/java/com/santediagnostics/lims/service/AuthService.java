@@ -55,7 +55,7 @@ public class AuthService {
     User u = new User();
     u.setName(name);
     u.setEmail(email);
-    u.setPasswordHash(PasswordUtil.hash(UUID.randomUUID().toString())); // temp password
+    u.setPasswordHash(PasswordUtil.hash("welcome2santediagnostics"));
     u.setRole(role);
     u.setEmailVerified(true);
     u.setForcePasswordChange(true);
