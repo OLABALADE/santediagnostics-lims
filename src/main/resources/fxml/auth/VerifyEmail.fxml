@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.auth.VerifyEmailController"
-      alignment="CENTER" spacing="14" style="-fx-padding: 60 80; -fx-background-color: white;"
+      alignment="CENTER" spacing="16" styleClass="card" style="-fx-background-color: white;"
       stylesheets="@../../css/global.css">
+    
+    <padding>
+        <Insets top="60" right="80" bottom="60" left="80"/>
+    </padding>
 
-    <Label text="Verify Email" styleClass="label-title"/>
-    <Label text="Enter the token from your verification email." style="-fx-text-fill: #666;" wrapText="true"/>
+    <VBox alignment="CENTER" spacing="8">
+        <Label text="📧 Verify Your Email" styleClass="label-title"/>
+        <Label text="Enter the verification code sent to your email" styleClass="label-subtitle" wrapText="true" alignment="CENTER"/>
+    </VBox>
 
-    <TextField fx:id="tokenField" promptText="Verification token" prefWidth="300"/>
-    <Label fx:id="errorLabel" styleClass="error-label"/>
-
-    <Button text="Verify"       styleClass="btn-primary"   prefWidth="300" onAction="#handleVerify"/>
-    <Button text="Back to Login" styleClass="btn-secondary" prefWidth="300" onAction="#goToLogin"/>
+    <VBox spacing="12" alignment="CENTER" prefWidth="320">
+        <TextField fx:id="tokenField" promptText="Verification Code" style="-fx-padding: 10 12; -fx-font-size: 14px;" alignment="CENTER"/>
+        <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+        <Button text="Verify" styleClass="btn-primary" prefWidth="320" onAction="#handleVerify"/>
+        <Button text="Back to Login" styleClass="btn-secondary" prefWidth="320" onAction="#goToLogin"/>
+    </VBox>
 </VBox>
