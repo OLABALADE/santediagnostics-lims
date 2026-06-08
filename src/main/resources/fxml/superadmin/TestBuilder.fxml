@@ -2,7 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.sante.lims.controller.superadmin.TestBuilderController"
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.superadmin.TestBuilderController"
       spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
       stylesheets="@../../css/global.css">
 
