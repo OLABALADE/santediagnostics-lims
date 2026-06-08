@@ -45,6 +45,7 @@ public class RegisterController {
       authService.registerCustomer(name, email, pass);
       errorLabel.setStyle("-fx-text-fill: green;");
       errorLabel.setText("Registration successful! Check your email to verify your account.");
+      SceneManager.navigateTo(event, "/fxml/auth/VerifyEmail.fxml");
     } catch (Exception e) {
       errorLabel.setText(e.getMessage());
     }
