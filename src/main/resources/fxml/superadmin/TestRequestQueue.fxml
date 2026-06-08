@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.superadmin.TestRequestQueueController"
-      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      spacing="16" style="-fx-padding: 30; -fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
       stylesheets="@../../css/global.css">
 
     <Label text="Test Request Queue" styleClass="label-title"/>
 
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search by customer or test..." prefWidth="300" style="-fx-padding: 8 12;"/>
+        <ComboBox fx:id="filterCombo" promptText="Payment Status" prefWidth="150"/>
+        <Button text="Search" styleClass="btn-secondary" onAction="#handleSearch"/>
+        <Button text="Refresh" styleClass="btn-secondary" onAction="#handleRefresh"/>
+    </HBox>
+
     <TableView fx:id="requestTable" prefHeight="340">
         <columns>
             <TableColumn fx:id="colCustomer" text="Customer" prefWidth="160"/>
-            <TableColumn fx:id="colTest"     text="Test"     prefWidth="160"/>
-            <TableColumn fx:id="colStatus"   text="Payment"  prefWidth="100"/>
-            <TableColumn fx:id="colDate"     text="Date"     prefWidth="160"/>
+            <TableColumn fx:id="colTest" text="Test" prefWidth="160"/>
+            <TableColumn fx:id="colStatus" text="Payment" prefWidth="100"/>
+            <TableColumn fx:id="colAmount" text="Amount" prefWidth="100"/>
+            <TableColumn fx:id="colDate" text="Date" prefWidth="160"/>
         </columns>
     </TableView>
 
-    <HBox spacing="10">
-        <Button text="Mark Paid" styleClass="btn-primary" onAction="#handleMarkPaid"/>
-    </HBox>
+    <Button text="Mark Paid" styleClass="btn-primary" onAction="#handleMarkPaid"/>
 
     <Label fx:id="errorLabel" styleClass="error-label"/>
     <Button text="← Back" styleClass="btn-secondary" onAction="#goBack"/>

@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.superadmin.TestBuilderController"
-      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
-      stylesheets="@../../css/global.css">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-    <Label text="Test Builder" styleClass="label-title"/>
+<VBox spacing="16" style="-fx-background-color: white;" styleClass="card" stylesheets="@../../css/global.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.santediagnostics.lims.controller.superadmin.TestBuilderController">
+    
+    <padding>
+        <Insets bottom="30" left="30" right="30" top="30" />
+    </padding>
 
-    <TableView fx:id="testTable" prefHeight="260" onMouseClicked="#handleSelect">
+    <Label styleClass="label-title" text="⚙ Test Builder" />
+
+    <TableView fx:id="testTable" onMouseClicked="#handleSelect" prefHeight="260">
         <columns>
-            <TableColumn fx:id="colName"   text="Name"    prefWidth="180"/>
-            <TableColumn fx:id="colPrice"  text="Price"   prefWidth="100"/>
-            <TableColumn fx:id="colTat"    text="TAT (h)" prefWidth="80"/>
-            <TableColumn fx:id="colFormat" text="Format"  prefWidth="100"/>
-            <TableColumn fx:id="colActive" text="Active"  prefWidth="70"/>
+            <TableColumn fx:id="colName" prefWidth="180" text="Test Name" />
+            <TableColumn fx:id="colPrice" prefWidth="100" text="Price (₦)" />
+            <TableColumn fx:id="colTat" prefWidth="80" text="TAT (hours)" />
+            <TableColumn fx:id="colFormat" prefWidth="100" text="Result Format" />
+            <TableColumn fx:id="colActive" prefWidth="70" text="Active" />
         </columns>
     </TableView>
 
-    <HBox spacing="10">
-        <TextField fx:id="nameField"  promptText="Test name"         prefWidth="180"/>
-        <TextField fx:id="priceField" promptText="Price"             prefWidth="100"/>
-        <TextField fx:id="tatField"   promptText="TAT hours"         prefWidth="90"/>
-        <ComboBox  fx:id="formatCombo" promptText="Format"           prefWidth="110"/>
-        <Button text="Save" styleClass="btn-primary" onAction="#handleSave"/>
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <TextField fx:id="nameField" prefWidth="180" promptText="Test name" style="-fx-padding: 8 12;" />
+        <TextField fx:id="priceField" prefWidth="100" promptText="Price" style="-fx-padding: 8 12;" />
+        <TextField fx:id="tatField" prefWidth="90" promptText="TAT hours" style="-fx-padding: 8 12;" />
+        <ComboBox fx:id="formatCombo" prefWidth="110" promptText="Format" />
+        <CheckBox fx:id="activeCheck" selected="true" text="Active" />
+        <Button onAction="#handleSave" styleClass="btn-primary" text="Save" />
+        <Button onAction="#handleDelete" styleClass="btn-danger" text="Delete" />
     </HBox>
 
-    <Label fx:id="errorLabel" styleClass="error-label"/>
-    <Button text="← Back" styleClass="btn-secondary" onAction="#goBack"/>
+    <Label fx:id="errorLabel" styleClass="error-label" />
+    <Label fx:id="successLabel" styleClass="success-label" />
+    <Button onAction="#goBack" styleClass="btn-secondary" text="← Back" />
 </VBox>
