@@ -20,6 +20,16 @@ public class SampleDAO {
     return s;
   }
 
+  public Sample findById(int id) throws Exception {
+    String sql = "SELECT * FROM samples WHERE id = ?";
+    try (Connection c = DatabaseConfig.getConnection();
+        PreparedStatement ps = c.prepareStatement(sql)) {
+      ps.setInt(1, id);
+      ResultSet rs = ps.executeQuery();
+      return rs.next() ? map(rs) : null;
+    }
+  }
+
   public Sample findByRequestId(int requestId) throws Exception {
     String sql = "SELECT * FROM samples WHERE request_id = ?";
     try (Connection c = DatabaseConfig.getConnection();

@@ -51,4 +51,9 @@ public class Sample {
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
+
+  @Override
+  public String toString() {
+    return "Sample #" + id + " — Request #" + requestId + " [" + status + "]";
+  }
 }

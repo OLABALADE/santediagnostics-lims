@@ -24,6 +24,16 @@ public class UserDAO {
     return u;
   }
 
+  public User findById(int id) throws Exception {
+    String sql = "SELECT * FROM users WHERE id = ?";
+    try (Connection c = DatabaseConfig.getConnection();
+        PreparedStatement ps = c.prepareStatement(sql)) {
+      ps.setInt(1, id);
+      ResultSet rs = ps.executeQuery();
+      return rs.next() ? map(rs) : null;
+    }
+  }
+
   public User findByEmail(String email) throws Exception {
     String sql = "SELECT * FROM users WHERE email = ?";
     try (Connection c = DatabaseConfig.getConnection();

@@ -13,22 +13,18 @@
 
     <Label text="📊 My Results" styleClass="label-title"/>
 
-    <VBox spacing="8">
-        <Label text="Active Orders" style="-fx-font-weight: bold;"/>
-        <Label fx:id="countdownLabel" wrapText="true" style="-fx-background-color: #e3f2fd; -fx-padding: 12; -fx-background-radius: 8;" prefWidth="580"/>
-    </VBox>
+    <Label text="Active Orders:" style="-fx-font-weight: bold;"/>
+    <VBox fx:id="countdownBox" spacing="6"
+          style="-fx-background-color: #e3f2fd; -fx-padding: 12; -fx-background-radius: 4;"/>
 
-    <VBox spacing="8">
-        <Label text="Verified Results" style="-fx-font-weight: bold;"/>
-        <TableView fx:id="resultTable" prefHeight="240">
-            <columns>
-                <TableColumn fx:id="colTestName" text="Test Name" prefWidth="180"/>
-                <TableColumn fx:id="colValue" text="Result Value" prefWidth="180"/>
-                <TableColumn fx:id="colFile" text="Attachment" prefWidth="80"/>
-                <TableColumn fx:id="colDate" text="Date" prefWidth="150"/>
-            </columns>
-        </TableView>
-    </VBox>
+    <Label text="Verified Results:" style="-fx-font-weight: bold;"/>
+    <TableView fx:id="resultTable" prefHeight="240">
+        <columns>
+            <TableColumn fx:id="colValue" text="Value"    prefWidth="200"/>
+            <TableColumn fx:id="colFile"  text="Has File" prefWidth="90"/>
+            <TableColumn fx:id="colDate"  text="Date"     prefWidth="180"/>
+        </columns>
+    </TableView>
 
     <HBox spacing="10">
         <Button text="Download File" styleClass="btn-primary" onAction="#handleDownload"/>

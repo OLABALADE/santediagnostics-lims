@@ -20,6 +20,7 @@
         <Button text="📋 Request Queue" styleClass="btn-primary" prefWidth="280" onAction="#goToQueue"/>
         <Button text="🔬 Sample Tracking" styleClass="btn-primary" prefWidth="280" onAction="#goToSampleTracking"/>
         <Button text="📤 Result Upload" styleClass="btn-primary" prefWidth="280" onAction="#goToResultUpload"/>
+        <Button text="👥 Create Customer Account" styleClass="btn-primary" prefWidth="260" onAction="#goToUserManagement"/>
         <Button text="🚪 Logout" styleClass="btn-secondary" prefWidth="280" onAction="#handleLogout"/>
     </VBox>
 </VBox>
