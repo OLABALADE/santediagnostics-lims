@@ -1,7 +1,10 @@
 package com.santediagnostics.lims.controller.attendant;
 
+import com.santediagnostics.lims.dao.TestRequestDAO;
+import com.santediagnostics.lims.model.PaymentStatus;
 import com.santediagnostics.lims.model.Result;
 import com.santediagnostics.lims.model.Sample;
+import com.santediagnostics.lims.model.TestRequest;
 import com.santediagnostics.lims.service.ResultService;
 import com.santediagnostics.lims.service.SampleService;
 import com.santediagnostics.lims.util.SceneManager;
@@ -30,10 +33,27 @@ public class ResultUploadController {
 
   private final SampleService sampleService = new SampleService();
   private final ResultService resultService = new ResultService();
+  private final TestRequestDAO requestDAO = new TestRequestDAO();
   private String selectedFilePath;
 
   @FXML
   public void initialize() {
+    sampleCombo.setCellFactory(lv -> new javafx.scene.control.ListCell<>() {
+      @Override
+      protected void updateItem(Sample s, boolean empty) {
+        super.updateItem(s, empty);
+        setText(empty || s == null ? null
+            : "Sample #" + s.getId() + " — Request #" + s.getRequestId() + " [" + s.getStatus() + "]");
+      }
+    });
+    sampleCombo.setButtonCell(new javafx.scene.control.ListCell<>() {
+      @Override
+      protected void updateItem(Sample s, boolean empty) {
+        super.updateItem(s, empty);
+        setText(empty || s == null ? null
+            : "Sample #" + s.getId() + " — Request #" + s.getRequestId() + " [" + s.getStatus() + "]");
+      }
+    });
     try {
       sampleCombo.setItems(FXCollections.observableArrayList(sampleService.getAllSamples()));
     } catch (Exception e) {
@@ -59,6 +79,18 @@ public class ResultUploadController {
     Sample sample = sampleCombo.getValue();
     if (sample == null) {
       errorLabel.setText("Select a sample.");
+      return;
+    }
+
+    try {
+      TestRequest req = requestDAO.findAll().stream()
+          .filter(r -> r.getId() == sample.getRequestId()).findFirst().orElse(null);
+      if (req == null || req.getPaymentStatus() == PaymentStatus.UNPAID) {
+        errorLabel.setText("Cannot upload result: payment not confirmed for this request.");
+        return;
+      }
+    } catch (Exception e) {
+      errorLabel.setText(e.getMessage());
       return;
     }
 
@@ -93,6 +125,12 @@ public class ResultUploadController {
       return;
     }
     try {
+      TestRequest req = requestDAO.findAll().stream()
+          .filter(r -> r.getId() == sample.getRequestId()).findFirst().orElse(null);
+      if (req == null || req.getPaymentStatus() == PaymentStatus.UNPAID) {
+        errorLabel.setText("Cannot verify result: payment not confirmed for this request.");
+        return;
+      }
       Result r = resultService.getResultBySample(sample.getId());
       if (r == null) {
         errorLabel.setText("No result uploaded for this sample.");

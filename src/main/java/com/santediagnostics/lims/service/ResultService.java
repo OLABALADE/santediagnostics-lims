@@ -23,33 +23,23 @@ public class ResultService {
     return id;
   }
 
-  /**
-   * Verify result and email the customer. sampleId needed to trace back to
-   * customer.
-   */
+  /** Verify result and email the customer. */
   public void verifyResult(int attendantId, int resultId, int sampleId) throws Exception {
     resultDAO.verify(resultId, attendantId);
     auditService.log(attendantId, "VERIFY_RESULT", "results", resultId, null);
 
-    // Notify customer via email
-    Sample sample = sampleDAO.findByRequestId(sampleId);
+    Sample sample = sampleDAO.findById(sampleId);
     if (sample == null)
       return;
-    List<TestRequest> reqs = requestDAO.findByCustomer(0); // get all, filter below
-    // Use direct lookup by request id
-    TestRequest req = findRequestById(sample.getRequestId());
+    TestRequest req = requestDAO.findAll().stream()
+        .filter(r -> r.getId() == sample.getRequestId())
+        .findFirst().orElse(null);
     if (req == null)
       return;
-    User customer = userDAO.findByEmail(req.getCustomerName()); // customerName holds email via join
+    User customer = userDAO.findById(req.getCustomerId());
     if (customer == null)
       return;
     emailService.sendResultReady(customer.getEmail(), customer.getName(), req.getTestTypeName());
-  }
-
-  private TestRequest findRequestById(int requestId) throws Exception {
-    return requestDAO.findAll().stream()
-        .filter(r -> r.getId() == requestId)
-        .findFirst().orElse(null);
   }
 
   public Result getResultBySample(int sampleId) throws Exception {

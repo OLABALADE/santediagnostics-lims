@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.santediagnostics.lims.controller.attendant.AttendantUserManagementController"
+      spacing="14" style="-fx-padding: 60 80; -fx-background-color: white;"
+      stylesheets="@../../css/global.css">
+
+    <Label text="Create Customer Account" styleClass="label-title"/>
+
+    <TextField fx:id="nameField"  promptText="Full Name" prefWidth="300"/>
+    <TextField fx:id="emailField" promptText="Email"     prefWidth="300"/>
+    <Label fx:id="errorLabel" styleClass="error-label"/>
+
+    <Button text="Create Account" styleClass="btn-primary"   prefWidth="300" onAction="#handleCreate"/>
+    <Button text="← Back"         styleClass="btn-secondary" prefWidth="300" onAction="#goBack"/>
+</VBox>
